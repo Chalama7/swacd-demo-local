@@ -1,0 +1,54 @@
+apiVersion: apiextensions.k8s.io/v1
+kind: CustomResourceDefinition
+metadata:
+  name: originservices.swacd.io
+spec:
+  group: swacd.io
+  scope: Namespaced
+  names:
+    kind: OriginService
+    plural: originservices
+    singular: originservice
+  versions:
+    - name: v1alpha1
+      served: true
+      storage: true
+      schema:
+        openAPIV3Schema:
+          type: object
+          properties:
+            spec:
+              type: object
+              properties:
+                type:
+                  type: string
+                endpoint:
+                  type: string
+                healthCheck:
+                  type: object
+                  properties:
+                    path:
+                      type: string
+                    intervalSeconds:
+                      type: integer
+                authentication:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      type: { type: string }
+                      certificateRef:
+                        type: object
+                        properties:
+                          name: { type: string }
+                providerRef:
+                  type: object
+                  properties:
+                    apiVersion: { type: string }
+                    kind: { type: string }
+                    name: { type: string }
+            status:
+              type: object
+              properties:
+                phase: { type: string }
+                message: { type: string }

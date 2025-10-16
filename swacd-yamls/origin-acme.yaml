@@ -1,0 +1,22 @@
+apiVersion: swacd.io/v1alpha1
+kind: OriginService
+metadata:
+  name: acme-origin
+  namespace: acme
+spec:
+  type: cloudfront
+  endpoint: dp53cw9qm2h5h.cloudfront.net
+  healthCheck:
+    path: /index.html
+    intervalSeconds: 30
+  authentication:
+    - type: mTLS
+      certificateRef:
+        name: acme-origin-cert
+  providerRef:
+    apiVersion: providers.swacd.io/v1alpha1
+    kind: AWSProvider
+    name: aws-sandbox
+status:
+  phase: Active
+  message: "CloudFront distribution validated"

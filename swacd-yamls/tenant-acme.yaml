@@ -1,0 +1,23 @@
+apiVersion: swacd.io/v1alpha1
+kind: Tenant
+metadata:
+  name: acme-tenant
+  namespace: default
+spec:
+  tenantId: acme-lob
+  ownerEmail: acme.owner@jpmchase.com
+  lob: Chase Digital
+  description: Tenant workspace for Acme app
+  edgeServiceProviders:
+    - apiVersion: providers.swacd.io/v1alpha1
+      kind: CloudflareProvider
+      name: cloudflare-prod
+    - apiVersion: providers.swacd.io/v1alpha1
+      kind: AkamaiProvider
+      name: akamai-prod
+status:
+  phase: Active
+  conditions:
+    - type: AccountCreated
+      status: "True"
+      message: "Tenant accounts provisioned in Cloudflare and Akamai"

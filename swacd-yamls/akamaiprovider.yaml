@@ -1,0 +1,12 @@
+apiVersion: providers.swacd.io/v1alpha1
+kind: AkamaiProvider
+metadata:
+  name: akamai-prod
+  namespace: default
+spec:
+  contractId: ctr_xxxxxxx
+  clientSecretRef:
+    name: akamai-client-secret
+status:
+  phase: PendingApproval
+  message: "Awaiting DDI Hostmaster proxy approval"

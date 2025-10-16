@@ -1,0 +1,14 @@
+apiVersion: providers.swacd.io/v1alpha1
+kind: CloudflareProvider
+metadata:
+  name: cloudflare-prod
+  namespace: default
+spec:
+  accountId: demo-account-id
+  apiTokenSecretRef:
+    name: cloudflare-api-token
+  zone: edge.cloudcfg.io
+  email: cf-admin@jpmchase.com
+status:
+  phase: Verified
+  message: "Token verified and API connectivity healthy"

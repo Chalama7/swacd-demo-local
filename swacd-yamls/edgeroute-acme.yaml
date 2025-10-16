@@ -1,0 +1,30 @@
+apiVersion: swacd.io/v1alpha1
+kind: EdgeRoute
+metadata:
+  name: acme-edge-route
+  namespace: acme
+spec:
+  fqdn: acme.edge.cloudcfg.io
+  hostnames:
+    - www.acme.edge.cloudcfg.io
+  routes:
+    - path: /
+      backendRef:
+        apiVersion: swacd.io/v1alpha1
+        kind: OriginService
+        name: acme-origin
+      cache:
+        enabled: true
+        ttl: 300
+    - path: /api/*
+      backendRef:
+        name: acme-origin
+      cache:
+        enabled: false
+  authentication:
+    - type: mTLS
+      certificateRef:
+        name: acme-origin-cert
+status:
+  phase: Pending
+  message: "Awaiting propagation to Cloudflare and Akamai"

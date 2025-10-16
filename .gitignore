@@ -1,0 +1,4 @@
+# Ignore binaries and build outputs
+kcp/.kcp/
+kcp/bin/
+*.log
