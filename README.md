@@ -21,3 +21,6 @@ It demonstrates the end-to-end flow of defining Custom Resources (CRDs), applyin
 ```bash
 cd kcp
 ./bin/kcp start --root-directory=.kcp --run-controllers=true
+### 🔗 Related Repository
+This demo works with a private controller repo:
+➡️ [swacd-operator (private)](https://github.com/Chalama7/swacd-operator)
